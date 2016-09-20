@@ -13,7 +13,6 @@ public class UserDao {
 			String sql = "insert into base.T_USER ('name') values ('" + user.getName() + "')";
 			statement.executeUpdate(sql);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
