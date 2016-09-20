@@ -11,6 +11,10 @@ public class JdbcUtilities {
 	private static String url = "jdbc:mysql://localhost:3306/base";
 	private static String user = "root";
 	private static String password = "";
+	private static JdbcUtilities instance;
+
+	private JdbcUtilities() {
+	}
 
 	public static Connection getConnection() {
 		try {
@@ -36,5 +40,12 @@ public class JdbcUtilities {
 			e.printStackTrace();
 		}
 		return statement;
+	}
+
+	public static JdbcUtilities getInstance() {
+		if (instance == null) {
+			instance = new JdbcUtilities();
+		}
+		return instance;
 	}
 }
