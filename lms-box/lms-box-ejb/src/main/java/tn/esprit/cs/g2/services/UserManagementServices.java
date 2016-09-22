@@ -1,5 +1,8 @@
 package tn.esprit.cs.g2.services;
 
-public class UserManagementServices {
+import javax.ejb.Stateless;
+
+@Stateless
+public class UserManagementServices implements UserManagementServicesLocal, UserManagementServicesRemote {
 
 }
