@@ -4,5 +4,5 @@ import javax.ejb.Remote;
 
 @Remote
 public interface UserManagementServicesRemote {
-
+	void sayAhla(String name);
 }
