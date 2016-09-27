@@ -16,7 +16,9 @@ public class DisplayScheduler implements DisplaySchedulerRemote, DisplaySchedule
 
 	@Override
 	public String requestForScheduler() {
-		return "10 AM";
+		return "10 pm";
 	}
+
+	
 
 }
