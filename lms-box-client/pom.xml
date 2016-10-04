@@ -25,6 +25,12 @@
 			<version>9.0.0.Alpha1</version>
 			<type>pom</type>
 		</dependency>
+		<dependency>
+			<groupId>tn.esprit.cs.g2</groupId>
+			<artifactId>lms-box-ejb</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>ejb</type>
+		</dependency>
 	</dependencies>
 
 	<build>
