@@ -1,28 +1,33 @@
 package tn.esprit.cs.g2.entities;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 
+/**
+ * Entity implementation class for Entity: Course
+ *
+ */
 @Entity
-public class User implements Serializable {
+
+public class Course implements Serializable {
 
 	@Id
 	private int id;
 	private String name;
 
-	@OneToMany(mappedBy="user")
-	private List<Course> courses;
+	@ManyToOne
+	private User user;
 	private static final long serialVersionUID = 1L;
 
-	public User() {
+	public Course() {
+		super();
 	}
 
 	public int getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(int id) {
@@ -30,19 +35,19 @@ public class User implements Serializable {
 	}
 
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	public List<Course> getCourses() {
-		return courses;
+	public User getUser() {
+		return user;
 	}
 
-	public void setCourses(List<Course> courses) {
-		this.courses = courses;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }
