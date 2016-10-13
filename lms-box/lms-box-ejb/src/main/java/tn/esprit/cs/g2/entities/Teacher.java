@@ -18,7 +18,13 @@ public class Teacher extends User implements Serializable {
 
 	public Teacher() {
 		super();
-	}   
+	} 
+	
+	public Teacher(String name, int experience) {
+		super(name);
+		this.experience = experience;
+	}
+
 	public int getExperience() {
 		return this.experience;
 	}
