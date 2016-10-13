@@ -14,7 +14,7 @@ public class User implements Serializable {
 	private int id;
 	private String name;
 
-	@OneToMany(mappedBy="user")
+	@OneToMany(mappedBy = "teacher")
 	private List<Course> courses;
 	private static final long serialVersionUID = 1L;
 

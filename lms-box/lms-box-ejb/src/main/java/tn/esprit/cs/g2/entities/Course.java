@@ -19,7 +19,7 @@ public class Course implements Serializable {
 	private String name;
 
 	@ManyToOne
-	private User user;
+	private User teacher;
 	private static final long serialVersionUID = 1L;
 
 	public Course() {
@@ -42,12 +42,13 @@ public class Course implements Serializable {
 		this.name = name;
 	}
 
-	public User getUser() {
-		return user;
+	public User getTeacher() {
+		return teacher;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setTeacher(User teacher) {
+		this.teacher = teacher;
 	}
 
+	
 }
