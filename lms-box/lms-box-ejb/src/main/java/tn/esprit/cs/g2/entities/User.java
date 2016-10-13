@@ -6,9 +6,11 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 @Entity
 public class User implements Serializable {
+	
 	@Id
 	private int id;
 	private String name;
+	private static final long serialVersionUID = 1L;
 
 	public User() {
 	}
