@@ -25,4 +25,27 @@ public class UserManagement implements UserManagementRemote, UserManagementLocal
 		entityManager.persist(user);
 	}
 
+	@Override
+	public void updateUser(User user) {
+		entityManager.merge(user);
+
+	}
+
+	@Override
+	public void deleteUserById(int idUser) {
+		entityManager.remove(findUserById(idUser));
+
+	}
+
+	@Override
+	public void deleteUser(User user) {
+		entityManager.remove(entityManager.merge(user));
+
+	}
+
+	@Override
+	public User findUserById(int idUser) {
+		return entityManager.find(User.class, idUser);
+	}
+
 }
