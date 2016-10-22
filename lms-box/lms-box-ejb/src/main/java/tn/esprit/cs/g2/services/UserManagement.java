@@ -1,9 +1,13 @@
 package tn.esprit.cs.g2.services;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import tn.esprit.cs.g2.entities.Course;
+import tn.esprit.cs.g2.entities.Teacher;
 import tn.esprit.cs.g2.entities.User;
 
 /**
@@ -41,6 +45,15 @@ public class UserManagement implements UserManagementRemote, UserManagementLocal
 	@Override
 	public User findUserById(int idUser) {
 		return entityManager.find(User.class, idUser);
+	}
+
+	@Override
+	public void assignCoursesToUser(int idUser, List<Course> courses) {
+		Teacher teacher = (Teacher) findUserById(idUser);
+		teacher.linkCoursesWithThisUser(courses);
+
+		saveOrUpdateUser(teacher);
+
 	}
 
 }
