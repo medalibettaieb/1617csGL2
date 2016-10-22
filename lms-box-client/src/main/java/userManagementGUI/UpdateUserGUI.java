@@ -18,7 +18,7 @@ public class UpdateUserGUI {
 
 		userFound.setName("newlook");
 
-		userManagementRemote.updateUser(userFound);
+		userManagementRemote.saveOrUpdateUser(userFound);
 
 	}
 

@@ -19,7 +19,7 @@ public class AddUserGUI {
 		student.setName("salah");
 		student.setStudentCard("VIP");
 
-		userManagementRemote.addUser(student);
+		userManagementRemote.saveOrUpdateUser(student);
 
 	}
 

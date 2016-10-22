@@ -6,9 +6,8 @@ import tn.esprit.cs.g2.entities.User;
 
 @Remote
 public interface UserManagementRemote {
-	void addUser(User user);
 
-	void updateUser(User user);
+	void saveOrUpdateUser(User user);
 
 	void deleteUserById(int idUser);
 

@@ -33,8 +33,8 @@ public class Util {
 
 		Teacher teacher = new Teacher("hmed", 100);
 
-		userManagementLocal.addUser(teacher);
-		userManagementLocal.addUser(student);
-		userManagementLocal.addUser(student2);
+		userManagementLocal.saveOrUpdateUser(teacher);
+		userManagementLocal.saveOrUpdateUser(student);
+		userManagementLocal.saveOrUpdateUser(student2);
 	}
 }

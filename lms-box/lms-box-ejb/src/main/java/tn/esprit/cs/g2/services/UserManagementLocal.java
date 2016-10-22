@@ -6,9 +6,7 @@ import tn.esprit.cs.g2.entities.User;
 
 @Local
 public interface UserManagementLocal {
-	void addUser(User user);
-
-	void updateUser(User user);
+	void saveOrUpdateUser(User user);
 
 	void deleteUserById(int idUser);
 

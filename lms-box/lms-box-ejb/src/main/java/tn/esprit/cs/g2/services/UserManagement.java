@@ -21,12 +21,7 @@ public class UserManagement implements UserManagementRemote, UserManagementLocal
 	}
 
 	@Override
-	public void addUser(User user) {
-		entityManager.persist(user);
-	}
-
-	@Override
-	public void updateUser(User user) {
+	public void saveOrUpdateUser(User user) {
 		entityManager.merge(user);
 
 	}
