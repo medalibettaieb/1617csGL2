@@ -1,9 +1,12 @@
 package tn.esprit.cs.g2.services;
 
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import tn.esprit.cs.g2.entities.Course;
 import tn.esprit.cs.g2.entities.Teacher;
@@ -31,6 +34,15 @@ public class CourseManagement implements CourseManagementRemote, CourseManagemen
 
 		entityManager.persist(course);
 
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Course> findCoursesByTeacherId(int idTeacher) {
+		String jpql = "SELECT c FROM Course c WHERE c.teacher.id=:param";
+		Query query = entityManager.createQuery(jpql);
+		query.setParameter("param", idTeacher);
+		return query.getResultList();
 	}
 
 }

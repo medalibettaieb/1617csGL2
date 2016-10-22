@@ -17,6 +17,9 @@ public class FindUserByIdGUI {
 		User userFound = userManagementRemote.findUserById(1);
 
 		System.out.println(userFound.getName());
+		
+		System.out.println(userFound.getCourses().get(0).getName());
+		
 
 	}
 
