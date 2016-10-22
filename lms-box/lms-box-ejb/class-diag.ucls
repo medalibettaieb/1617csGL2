@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class-diagram version="1.1.10" icons="true" automaticImage="PNG" always-add-relationships="false" 
-  generalizations="true" realizations="true" associations="true" dependencies="false" nesting-relationships="true" 
-  router="FAN">  
+<class-diagram version="1.1.10" icons="true" automaticImage="PNG" always-add-relationships="true" generalizations="true" 
+  realizations="true" associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="tn.esprit.cs.g2.entities.User" project="lms-box-ejb" 
     file="/lms-box-ejb/src/main/java/tn/esprit/cs/g2/entities/User.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="272" y="103"/>    
+    <position height="-1" width="-1" x="360" y="148"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -13,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="tn.esprit.cs.g2.entities.Student" project="lms-box-ejb" 
     file="/lms-box-ejb/src/main/java/tn/esprit/cs/g2/entities/Student.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="94" width="131" x="121" y="205"/>    
+    <position height="-1" width="-1" x="568" y="212"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -22,7 +21,7 @@
   </class>  
   <class id="3" language="java" name="tn.esprit.cs.g2.entities.Teacher" project="lms-box-ejb" 
     file="/lms-box-ejb/src/main/java/tn/esprit/cs/g2/entities/Teacher.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="94" width="131" x="292" y="205"/>    
+    <position height="-1" width="-1" x="568" y="63"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -31,33 +30,41 @@
   </class>  
   <class id="4" language="java" name="tn.esprit.cs.g2.entities.Course" project="lms-box-ejb" 
     file="/lms-box-ejb/src/main/java/tn/esprit/cs/g2/entities/Course.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="112" width="131" x="546" y="39"/>    
+    <position height="-1" width="-1" x="70" y="155"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <association id="5">    
+  <generalization id="5">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <generalization id="6">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <association id="7">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="6" name="courses"/>      
-      <multiplicity id="7" minimum="0" maximum="2147483647"/>    
+      <attribute id="8" name="courses">        
+        <position height="0" width="0" x="-36" y="-90"/>      
+      </attribute>      
+      <multiplicity id="9" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-36" y="-90"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="8">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="1"/>  
-  </generalization>  
-  <generalization id="9">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="1"/>  
-  </generalization>  
   <association id="10">    
     <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="11" name="teacher"/>      
-      <multiplicity id="12" minimum="0" maximum="1"/>    
+      <attribute id="11" name="teacher">        
+        <position height="0" width="0" x="125" y="55"/>      
+      </attribute>      
+      <multiplicity id="12" minimum="0" maximum="1">        
+        <position height="0" width="0" x="125" y="55"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
