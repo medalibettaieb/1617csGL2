@@ -7,6 +7,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import tn.esprit.cs.g2.entities.Course;
 import tn.esprit.cs.g2.entities.Teacher;
@@ -96,6 +97,20 @@ public class UserManagement implements UserManagementRemote, UserManagementLocal
 	@Override
 	public List<User> findAllUsers() {
 		return entityManager.createQuery("select u from User u").getResultList();
+	}
+
+	@Override
+	public Teacher findTeacherByCourseId(int idCourse) {
+		Teacher teacher = null;
+		Course course = courseManagementLocal.findCourseById(idCourse);
+		String qlString = "select u from User u where :param1 member of u.courses";
+		Query query = entityManager.createQuery(qlString);
+		query.setParameter("param1", course);
+		try {
+			teacher = (Teacher) query.getSingleResult();
+		} catch (Exception e) {
+		}
+		return teacher;
 	}
 
 }

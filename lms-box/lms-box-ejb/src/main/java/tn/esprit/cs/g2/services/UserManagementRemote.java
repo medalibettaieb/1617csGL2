@@ -23,5 +23,7 @@ public interface UserManagementRemote {
 
 	List<Teacher> findMostProductiveTeachers();
 
+	Teacher findTeacherByCourseId(int idCourse);
+
 	List<User> findAllUsers();
 }

@@ -32,8 +32,10 @@ public class Util {
 		Student student2 = new Student("olfa", "VIP");
 
 		Teacher teacher = new Teacher("hmed", 100);
+		Teacher teacher2 = new Teacher("saida", 200);
 
 		userManagementLocal.saveOrUpdateUser(teacher);
+		userManagementLocal.saveOrUpdateUser(teacher2);
 		userManagementLocal.saveOrUpdateUser(student);
 		userManagementLocal.saveOrUpdateUser(student2);
 	}

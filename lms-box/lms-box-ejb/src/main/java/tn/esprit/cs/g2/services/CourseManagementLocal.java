@@ -11,4 +11,6 @@ public interface CourseManagementLocal {
 	void addCourseWithTeacher(Course course, int idTeacher);
 
 	List<Course> findCoursesByTeacherId(int idTeacher);
+
+	Course findCourseById(int idCourse);
 }

@@ -45,4 +45,9 @@ public class CourseManagement implements CourseManagementRemote, CourseManagemen
 		return query.getResultList();
 	}
 
+	@Override
+	public Course findCourseById(int idCourse) {
+		return entityManager.find(Course.class, idCourse);
+	}
+
 }
