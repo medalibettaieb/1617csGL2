@@ -2,6 +2,7 @@ package tn.esprit.cs.g2.services;
 
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -17,6 +18,9 @@ import tn.esprit.cs.g2.entities.User;
 public class UserManagement implements UserManagementRemote, UserManagementLocal {
 	@PersistenceContext
 	private EntityManager entityManager;
+
+	@EJB
+	private CourseManagementLocal courseManagementLocal;
 
 	/**
 	 * Default constructor.
@@ -54,6 +58,36 @@ public class UserManagement implements UserManagementRemote, UserManagementLocal
 
 		saveOrUpdateUser(teacher);
 
+	}
+
+	@Override
+	public Teacher findMostProductiveTeacher() {
+		List<User> teachers = findAllUsers();
+		Teacher theOne = new Teacher();
+		for (User u : teachers) {
+			if (u instanceof Teacher) {
+				try {
+					int sizeOf = courseManagementLocal.findCoursesByTeacherId(u.getId()).size();
+					int theOneSize = courseManagementLocal.findCoursesByTeacherId(theOne.getId()).size();
+					if (sizeOf > theOneSize) {
+						theOne = (Teacher) u;
+					}
+
+				} catch (Exception e) {
+					System.out.println("the one is NULL");
+				}
+
+			} else {
+				System.out.println("not a teacher");
+			}
+		}
+		return theOne;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<User> findAllUsers() {
+		return entityManager.createQuery("select u from User u").getResultList();
 	}
 
 }

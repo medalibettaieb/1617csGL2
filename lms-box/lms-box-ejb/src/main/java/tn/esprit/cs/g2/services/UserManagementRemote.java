@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Remote;
 
 import tn.esprit.cs.g2.entities.Course;
+import tn.esprit.cs.g2.entities.Teacher;
 import tn.esprit.cs.g2.entities.User;
 
 @Remote
@@ -19,4 +20,8 @@ public interface UserManagementRemote {
 	User findUserById(int idUser);
 
 	void assignCoursesToUser(int idUser, List<Course> courses);
+
+	Teacher findMostProductiveTeacher();
+
+	List<User> findAllUsers();
 }
