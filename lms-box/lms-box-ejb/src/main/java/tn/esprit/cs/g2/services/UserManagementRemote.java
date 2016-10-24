@@ -21,7 +21,7 @@ public interface UserManagementRemote {
 
 	void assignCoursesToUser(int idUser, List<Course> courses);
 
-	Teacher findMostProductiveTeacher();
+	List<Teacher> findMostProductiveTeachers();
 
 	List<User> findAllUsers();
 }

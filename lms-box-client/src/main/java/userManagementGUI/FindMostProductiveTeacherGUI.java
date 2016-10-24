@@ -1,5 +1,7 @@
 package userManagementGUI;
 
+import java.util.List;
+
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -14,8 +16,10 @@ public class FindMostProductiveTeacherGUI {
 		UserManagementRemote userManagementRemote = (UserManagementRemote) context
 				.lookup("lms-box-ear/lms-box-ejb/UserManagement!tn.esprit.cs.g2.services.UserManagementRemote");
 
-		Teacher teacher = userManagementRemote.findMostProductiveTeacher();
-		System.out.println(teacher.getName());
+		List<Teacher> teachers = userManagementRemote.findMostProductiveTeachers();
+		for (Teacher t : teachers) {
+			System.out.println(t.getName());
+		}
 	}
 
 }
