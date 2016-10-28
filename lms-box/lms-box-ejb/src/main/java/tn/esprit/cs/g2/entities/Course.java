@@ -1,11 +1,13 @@
 package tn.esprit.cs.g2.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 /**
@@ -23,6 +25,9 @@ public class Course implements Serializable {
 
 	@ManyToOne
 	private User teacher;
+	
+	@ManyToMany
+	private List<User> students;
 	private static final long serialVersionUID = 1L;
 
 	public Course() {
@@ -56,6 +61,14 @@ public class Course implements Serializable {
 
 	public void setTeacher(User teacher) {
 		this.teacher = teacher;
+	}
+
+	public List<User> getStudents() {
+		return students;
+	}
+
+	public void setStudents(List<User> students) {
+		this.students = students;
 	}
 
 }

@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import tn.esprit.cs.g2.entities.Course;
+import tn.esprit.cs.g2.entities.Student;
 import tn.esprit.cs.g2.entities.Teacher;
 
 /**
@@ -48,6 +49,24 @@ public class CourseManagement implements CourseManagementRemote, CourseManagemen
 	@Override
 	public Course findCourseById(int idCourse) {
 		return entityManager.find(Course.class, idCourse);
+	}
+
+	@Override
+	public void subscibeToCourse(int idCourse, int idStudent) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Student> findAllStudentsByCourseId(int idCourse) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Course> findAllCoursesByIdUser(int idUser) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

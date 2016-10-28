@@ -5,10 +5,10 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -21,6 +21,9 @@ public class User implements Serializable {
 
 	@OneToMany(mappedBy = "teacher", cascade = CascadeType.MERGE)
 	private List<Course> courses;
+
+	@ManyToMany(mappedBy = "students")
+	private List<Course> subscribedCourses;
 	private static final long serialVersionUID = 1L;
 
 	public User() {
@@ -60,5 +63,13 @@ public class User implements Serializable {
 		for (Course c : courses) {
 			c.setTeacher(this);
 		}
+	}
+
+	public List<Course> getSubscribedCourses() {
+		return subscribedCourses;
+	}
+
+	public void setSubscribedCourses(List<Course> subscribedCourses) {
+		this.subscribedCourses = subscribedCourses;
 	}
 }
