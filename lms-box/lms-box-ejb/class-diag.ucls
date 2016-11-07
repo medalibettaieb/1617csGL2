@@ -38,52 +38,69 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <association id="5">    
+  <enumeration id="5" language="java" name="tn.esprit.cs.g2.entities.ExamType" project="lms-box-ejb" 
+    file="/lms-box-ejb/src/main/java/tn/esprit/cs/g2/entities/ExamType.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="85" y="339"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </enumeration>  
+  <association id="6">    
     <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="6" name="teacher">        
+      <attribute id="7" name="teacher">        
         <position height="0" width="0" x="125" y="55"/>      
       </attribute>      
-      <multiplicity id="7" minimum="0" maximum="1">        
+      <multiplicity id="8" minimum="0" maximum="1">        
         <position height="0" width="0" x="125" y="55"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="8">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="9" name="courses">        
-        <position height="0" width="0" x="-36" y="-90"/>      
-      </attribute>      
-      <multiplicity id="10" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="-36" y="-90"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="11">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="1"/>  
-  </generalization>  
-  <generalization id="12">    
+  <generalization id="9">    
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="1"/>  
   </generalization>  
-  <association id="13">    
+  <association id="10">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="14" name="subscribedCourses"/>      
-      <multiplicity id="15" minimum="0" maximum="2147483647"/>    
+      <attribute id="11" name="courses">        
+        <position height="0" width="0" x="-36" y="-90"/>      
+      </attribute>      
+      <multiplicity id="12" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-36" y="-90"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="16">    
+  <generalization id="13">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <association id="14">    
     <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="17" name="students"/>      
-      <multiplicity id="18" minimum="0" maximum="2147483647"/>    
+      <attribute id="15" name="students">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="16" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="17">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="18" name="subscribedCourses">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="19" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
