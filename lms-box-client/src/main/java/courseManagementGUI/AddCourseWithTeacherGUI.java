@@ -17,9 +17,9 @@ public class AddCourseWithTeacherGUI {
 		CourseManagementRemote courseManagementRemote = (CourseManagementRemote) context
 				.lookup("lms-box-ear/lms-box-ejb/CourseManagement!tn.esprit.cs.g2.services.CourseManagementRemote");
 		Course course = new Course("java EE7");
-		Map<ExamType, Integer> mapExamType = new HashMap<ExamType, Integer>();
-		mapExamType.put(ExamType.valueOf("DS"), 20);
-		mapExamType.put(ExamType.valueOf("EXAM"), 80);
+		Map<String, Integer> mapExamType = new HashMap<String, Integer>();
+		mapExamType.put(ExamType.DS.toString(), 20);
+		mapExamType.put(ExamType.EXAM.toString(), 80);
 		course.setMapExamType(mapExamType);
 
 		courseManagementRemote.addCourseWithTeacher(course, 1);

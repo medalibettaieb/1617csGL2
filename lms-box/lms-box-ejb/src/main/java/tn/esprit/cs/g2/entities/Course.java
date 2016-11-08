@@ -6,8 +6,6 @@ import java.util.Map;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,7 +25,7 @@ public class Course implements Serializable {
 	private int id;
 	private String name;
 	@ElementCollection
-	private Map<ExamType, Integer> mapExamType;
+	private Map<String, Integer> mapExamType;
 
 	@ManyToOne
 	private User teacher;
@@ -77,11 +75,11 @@ public class Course implements Serializable {
 		this.students = students;
 	}
 
-	public Map<ExamType, Integer> getMapExamType() {
+	public Map<String, Integer> getMapExamType() {
 		return mapExamType;
 	}
 
-	public void setMapExamType(Map<ExamType, Integer> mapExamType) {
+	public void setMapExamType(Map<String, Integer> mapExamType) {
 		this.mapExamType = mapExamType;
 	}
 
