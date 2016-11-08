@@ -4,8 +4,10 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.Convert;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,8 +26,9 @@ public class Course implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
-	@ElementCollection
-	private Map<String, Integer> mapExamType;
+	@ElementCollection(fetch = FetchType.EAGER)
+	@Convert(converter = ExamTypeConverter.class, attributeName = "key")
+	private Map<ExamType, Integer> mapExamType;
 
 	@ManyToOne
 	private User teacher;
@@ -75,11 +78,11 @@ public class Course implements Serializable {
 		this.students = students;
 	}
 
-	public Map<String, Integer> getMapExamType() {
+	public Map<ExamType, Integer> getMapExamType() {
 		return mapExamType;
 	}
 
-	public void setMapExamType(Map<String, Integer> mapExamType) {
+	public void setMapExamType(Map<ExamType, Integer> mapExamType) {
 		this.mapExamType = mapExamType;
 	}
 

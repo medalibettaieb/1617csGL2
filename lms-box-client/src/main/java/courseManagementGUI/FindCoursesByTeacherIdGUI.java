@@ -7,6 +7,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
 import tn.esprit.cs.g2.entities.Course;
+import tn.esprit.cs.g2.entities.ExamType;
 import tn.esprit.cs.g2.services.CourseManagementRemote;
 
 public class FindCoursesByTeacherIdGUI {
@@ -17,7 +18,7 @@ public class FindCoursesByTeacherIdGUI {
 
 		List<Course> courses = courseManagementRemote.findCoursesByTeacherId(1);
 		for (Course c : courses) {
-			System.out.println(c.getName());
+			System.out.println(c.getMapExamType().get(ExamType.DS));
 		}
 	}
 }
