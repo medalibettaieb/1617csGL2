@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
-@Entity
+@Entity(name="User")
 public class User implements Serializable {
 
 	@Id
@@ -19,10 +19,10 @@ public class User implements Serializable {
 	private int id;
 	private String name;
 
-	@OneToMany(mappedBy = "teacher", cascade = CascadeType.MERGE)
+	@OneToMany(mappedBy = "teacher", cascade = CascadeType.MERGE, targetEntity = Course.class)
 	private List<Course> courses;
 
-	@ManyToMany(mappedBy = "students")
+	@ManyToMany(mappedBy = "students", targetEntity = Course.class)
 	private List<Course> subscribedCourses;
 	private static final long serialVersionUID = 1L;
 

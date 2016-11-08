@@ -30,10 +30,10 @@ public class Course implements Serializable {
 	@Convert(converter = ExamTypeConverter.class, attributeName = "key")
 	private Map<ExamType, Integer> mapExamType;
 
-	@ManyToOne
+	@ManyToOne(targetEntity = User.class)
 	private User teacher;
 
-	@ManyToMany
+	@ManyToMany(targetEntity = User.class)
 	private List<User> students;
 	private static final long serialVersionUID = 1L;
 

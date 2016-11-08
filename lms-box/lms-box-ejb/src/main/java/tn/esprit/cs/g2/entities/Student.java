@@ -8,7 +8,7 @@ import javax.persistence.Entity;
  * Entity implementation class for Entity: Student
  *
  */
-@Entity
+@Entity(name = "Student")
 
 public class Student extends User implements Serializable {
 
