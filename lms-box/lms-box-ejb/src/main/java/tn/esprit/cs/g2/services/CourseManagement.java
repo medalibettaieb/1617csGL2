@@ -10,7 +10,9 @@ import javax.persistence.Query;
 
 import tn.esprit.cs.g2.entities.Course;
 import tn.esprit.cs.g2.entities.Student;
+import tn.esprit.cs.g2.entities.SubscriptionDetail;
 import tn.esprit.cs.g2.entities.Teacher;
+import tn.esprit.cs.g2.entities.User;
 
 /**
  * Session Bean implementation class CourseManagement
@@ -53,8 +55,11 @@ public class CourseManagement implements CourseManagementRemote, CourseManagemen
 
 	@Override
 	public void subscibeToCourse(int idCourse, int idStudent) {
-		// TODO Auto-generated method stub
-		
+		Course courseFound = findCourseById(idCourse);
+		User userFound = userManagementLocal.findUserById(idStudent);
+
+		SubscriptionDetail subscriptionDetail = new SubscriptionDetail(userFound, courseFound);
+		entityManager.merge(subscriptionDetail);
 	}
 
 	@Override

@@ -18,5 +18,6 @@ public interface CourseManagementRemote {
 	List<Student> findAllStudentsByCourseId(int idCourse);
 
 	List<Course> findAllCoursesByIdUser(int idUser);
+	
 
 }

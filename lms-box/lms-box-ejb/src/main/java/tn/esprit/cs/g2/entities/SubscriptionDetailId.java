@@ -1,6 +1,7 @@
 package tn.esprit.cs.g2.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Embeddable;
 
@@ -14,6 +15,7 @@ public class SubscriptionDetailId implements Serializable {
 
 	private int idUser;
 	private int idCourse;
+	private Date dateOfTheSubscription;
 
 	public SubscriptionDetailId() {
 	}
@@ -22,6 +24,7 @@ public class SubscriptionDetailId implements Serializable {
 		super();
 		this.idUser = idUser;
 		this.idCourse = idCourse;
+		this.dateOfTheSubscription = new Date();
 	}
 
 	public int getIdUser() {
@@ -63,6 +66,14 @@ public class SubscriptionDetailId implements Serializable {
 		if (idUser != other.idUser)
 			return false;
 		return true;
+	}
+
+	public Date getDateOfTheSubscription() {
+		return dateOfTheSubscription;
+	}
+
+	public void setDateOfTheSubscription(Date dateOfTheSubscription) {
+		this.dateOfTheSubscription = dateOfTheSubscription;
 	}
 
 }
