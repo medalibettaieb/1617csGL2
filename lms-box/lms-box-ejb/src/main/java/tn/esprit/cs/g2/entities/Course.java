@@ -11,8 +11,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  * Entity implementation class for Entity: Course
@@ -33,8 +33,9 @@ public class Course implements Serializable {
 	@ManyToOne(targetEntity = User.class)
 	private User teacher;
 
-	@ManyToMany(targetEntity = User.class)
-	private List<User> students;
+	@OneToMany(mappedBy = "course")
+	private List<SubscriptionDetail> subscriptionDetails;
+
 	private static final long serialVersionUID = 1L;
 
 	public Course() {
@@ -70,20 +71,20 @@ public class Course implements Serializable {
 		this.teacher = teacher;
 	}
 
-	public List<User> getStudents() {
-		return students;
-	}
-
-	public void setStudents(List<User> students) {
-		this.students = students;
-	}
-
 	public Map<ExamType, Integer> getMapExamType() {
 		return mapExamType;
 	}
 
 	public void setMapExamType(Map<ExamType, Integer> mapExamType) {
 		this.mapExamType = mapExamType;
+	}
+
+	public List<SubscriptionDetail> getSubscriptionDetails() {
+		return subscriptionDetails;
+	}
+
+	public void setSubscriptionDetails(List<SubscriptionDetail> subscriptionDetails) {
+		this.subscriptionDetails = subscriptionDetails;
 	}
 
 }

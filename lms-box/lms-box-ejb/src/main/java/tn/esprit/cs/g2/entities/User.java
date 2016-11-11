@@ -8,10 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
-@Entity(name="User")
+@Entity(name = "User")
 public class User implements Serializable {
 
 	@Id
@@ -22,8 +21,9 @@ public class User implements Serializable {
 	@OneToMany(mappedBy = "teacher", cascade = CascadeType.MERGE, targetEntity = Course.class)
 	private List<Course> courses;
 
-	@ManyToMany(mappedBy = "students", targetEntity = Course.class)
-	private List<Course> subscribedCourses;
+	@OneToMany(mappedBy = "user")
+	private List<SubscriptionDetail> subscriptionDetails;
+
 	private static final long serialVersionUID = 1L;
 
 	public User() {
@@ -65,11 +65,11 @@ public class User implements Serializable {
 		}
 	}
 
-	public List<Course> getSubscribedCourses() {
-		return subscribedCourses;
+	public List<SubscriptionDetail> getSubscriptionDetails() {
+		return subscriptionDetails;
 	}
 
-	public void setSubscribedCourses(List<Course> subscribedCourses) {
-		this.subscribedCourses = subscribedCourses;
+	public void setSubscriptionDetails(List<SubscriptionDetail> subscriptionDetails) {
+		this.subscriptionDetails = subscriptionDetails;
 	}
 }

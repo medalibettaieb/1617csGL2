@@ -4,5 +4,5 @@ import javax.persistence.Convert;
 
 @Convert
 public enum ExamType {
-	TD, TP, DS, EXAM, PROJECT
+	TD, TP, DS, EXAM, PROJECT,RE_TAKE
 }
