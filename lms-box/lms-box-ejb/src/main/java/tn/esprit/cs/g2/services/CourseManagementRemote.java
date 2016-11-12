@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Remote;
 
 import tn.esprit.cs.g2.entities.Course;
+import tn.esprit.cs.g2.entities.ExamType;
 import tn.esprit.cs.g2.entities.Student;
 
 @Remote
@@ -20,5 +21,7 @@ public interface CourseManagementRemote {
 	List<Course> findAllCoursesByIdUser(int idUser);
 
 	List<Course> findAllCourses();
+
+	void assignMarks(int idTeacher, int idCourse, int idStudent, ExamType typeOfTheEvaluation, Float mark);
 
 }

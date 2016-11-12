@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import tn.esprit.cs.g2.entities.Course;
+import tn.esprit.cs.g2.entities.ExamType;
 import tn.esprit.cs.g2.entities.Student;
 import tn.esprit.cs.g2.entities.SubscriptionDetail;
 import tn.esprit.cs.g2.entities.Teacher;
@@ -90,5 +91,11 @@ public class CourseManagement implements CourseManagementRemote, CourseManagemen
 	@Override
 	public List<Course> findAllCourses() {
 		return entityManager.createQuery("select c from Course c", Course.class).getResultList();
+	}
+
+	@Override
+	public void assignMarks(int idTeacher, int idCourse, int idStudent, ExamType typeOfTheEvaluation, Float mark) {
+		
+		
 	}
 }
