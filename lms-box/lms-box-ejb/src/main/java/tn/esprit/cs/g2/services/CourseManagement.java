@@ -64,8 +64,16 @@ public class CourseManagement implements CourseManagementRemote, CourseManagemen
 
 	@Override
 	public List<Student> findAllStudentsByCourseId(int idCourse) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Student> students = null;
+		String jpql = "SELECT u FROM User u JOIN u.subscriptionDetails us WHERE us.course.id=:param1";
+		Query query = entityManager.createQuery(jpql);
+		query.setParameter("param1", idCourse);
+		try {
+			students = query.getResultList();
+		} catch (Exception e) {
+			System.err.println("no subscriptions in this course  ...");
+		}
+		return students;
 	}
 
 	@Override
@@ -77,5 +85,10 @@ public class CourseManagement implements CourseManagementRemote, CourseManagemen
 	@Override
 	public void saveOrUpdateCourse(Course course) {
 		entityManager.merge(course);
+	}
+
+	@Override
+	public List<Course> findAllCourses() {
+		return entityManager.createQuery("select c from Course c", Course.class).getResultList();
 	}
 }
