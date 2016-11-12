@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Convert;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -30,7 +31,7 @@ public class Course implements Serializable {
 	@Convert(converter = ExamTypeConverter.class, attributeName = "key")
 	private Map<ExamType, Integer> mapExamType;
 
-	@ManyToOne(targetEntity = User.class)
+	@ManyToOne(targetEntity = User.class, cascade = CascadeType.MERGE)
 	private User teacher;
 
 	@OneToMany(mappedBy = "course")
@@ -42,9 +43,10 @@ public class Course implements Serializable {
 		super();
 	}
 
-	public Course(String name) {
+	public Course(String name, Map<ExamType, Integer> mapExamType) {
 		super();
 		this.name = name;
+		this.mapExamType = mapExamType;
 	}
 
 	public int getId() {

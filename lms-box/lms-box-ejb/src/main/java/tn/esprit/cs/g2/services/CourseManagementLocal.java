@@ -10,6 +10,8 @@ import tn.esprit.cs.g2.entities.Course;
 public interface CourseManagementLocal {
 	void addCourseWithTeacher(Course course, int idTeacher);
 
+	void saveOrUpdateCourse(Course course);
+
 	List<Course> findCoursesByTeacherId(int idTeacher);
 
 	Course findCourseById(int idCourse);

@@ -74,4 +74,8 @@ public class CourseManagement implements CourseManagementRemote, CourseManagemen
 		return null;
 	}
 
+	@Override
+	public void saveOrUpdateCourse(Course course) {
+		entityManager.merge(course);
+	}
 }
