@@ -1,5 +1,6 @@
 package tn.esprit.cs.g2.services;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Remote;
@@ -10,6 +11,10 @@ import tn.esprit.cs.g2.entities.Student;
 
 @Remote
 public interface CourseManagementRemote {
+	void saveOrUpdateCourse(Course course);
+
+	Course findCourseById(int idCourse);
+
 	void addCourseWithTeacher(Course course, int idTeacher);
 
 	List<Course> findCoursesByTeacherId(int idTeacher);
@@ -22,6 +27,6 @@ public interface CourseManagementRemote {
 
 	List<Course> findAllCourses();
 
-	void assignMarks(int idTeacher, int idCourse, int idStudent, ExamType typeOfTheEvaluation, Float mark);
+	void assignMarks(int idTeacher, int idCourse, int idStudent, ExamType typeOfTheEvaluation, Float mark,Date dateOfTheEvaluation);
 
 }

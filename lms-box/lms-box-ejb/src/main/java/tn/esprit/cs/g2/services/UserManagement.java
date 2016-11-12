@@ -1,6 +1,7 @@
 package tn.esprit.cs.g2.services;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -10,6 +11,9 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import tn.esprit.cs.g2.entities.Course;
+import tn.esprit.cs.g2.entities.Student;
+import tn.esprit.cs.g2.entities.SubscriptionDetail;
+import tn.esprit.cs.g2.entities.SubscriptionDetailId;
 import tn.esprit.cs.g2.entities.Teacher;
 import tn.esprit.cs.g2.entities.User;
 
@@ -111,6 +115,46 @@ public class UserManagement implements UserManagementRemote, UserManagementLocal
 		} catch (Exception e) {
 		}
 		return teacher;
+	}
+
+	@Override
+	public Teacher checkTeacherByCourseId(int idCourse, int idTeacher) {
+		Teacher courseOwner = null;
+		Course course = courseManagementLocal.findCourseById(idCourse);
+		String qlString = "select u from User u where :param1 member of u.courses";
+		Query query = entityManager.createQuery(qlString);
+		query.setParameter("param1", course);
+		try {
+			courseOwner = (Teacher) query.getSingleResult();
+		} catch (Exception e) {
+		}
+		if (courseOwner.getId() == idTeacher) {
+			return courseOwner;
+		} else {
+			return null;
+		}
+
+	}
+
+	@Override
+	public Student checkIfStudentIsSuscribed(int studentId, int courseId) {
+		List<Student> students = courseManagementLocal.findAllStudentsByCourseId(courseId);
+		Student studentFound = (Student) findUserById(studentId);
+		if (students.contains(studentFound)) {
+			return studentFound;
+		} else {
+			return null;
+		}
+
+	}
+
+	@Override
+	public SubscriptionDetail findSubscriptionOfStudentInCourse(int studentId, int courseId,
+			Date dateOfTheSubscription) {
+		SubscriptionDetailId subscriptionDetailId = new SubscriptionDetailId(studentId, courseId,
+				dateOfTheSubscription);
+
+		return entityManager.find(SubscriptionDetail.class, subscriptionDetailId);
 	}
 
 }

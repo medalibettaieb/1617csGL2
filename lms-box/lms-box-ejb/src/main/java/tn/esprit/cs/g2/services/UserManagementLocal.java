@@ -1,10 +1,14 @@
 package tn.esprit.cs.g2.services;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Local;
 
 import tn.esprit.cs.g2.entities.Course;
+import tn.esprit.cs.g2.entities.Student;
+import tn.esprit.cs.g2.entities.SubscriptionDetail;
+import tn.esprit.cs.g2.entities.Teacher;
 import tn.esprit.cs.g2.entities.User;
 
 @Local
@@ -18,4 +22,16 @@ public interface UserManagementLocal {
 	User findUserById(int idUser);
 
 	void assignCoursesToUser(int idUser, List<Course> courses);
+
+	List<Teacher> findMostProductiveTeachers();
+
+	Teacher findTeacherByCourseId(int idCourse);
+
+	Teacher checkTeacherByCourseId(int idCourse, int idTeacher);
+
+	List<User> findAllUsers();
+
+	Student checkIfStudentIsSuscribed(int studentId, int courseId);
+	
+	SubscriptionDetail findSubscriptionOfStudentInCourse(int studentId, int courseId,Date dateOfTheSubscription);
 }

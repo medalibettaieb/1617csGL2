@@ -1,6 +1,8 @@
 package tn.esprit.cs.g2.services;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -94,8 +96,39 @@ public class CourseManagement implements CourseManagementRemote, CourseManagemen
 	}
 
 	@Override
-	public void assignMarks(int idTeacher, int idCourse, int idStudent, ExamType typeOfTheEvaluation, Float mark) {
-		
-		
+	public void assignMarks(int idTeacher, int idCourse, int idStudent, ExamType typeOfTheEvaluation, Float mark,
+			Date dateOfTheEvaluation) {
+		Teacher teacher = (Teacher) userManagementLocal.findUserById(idTeacher);
+		Student student = (Student) userManagementLocal.findUserById(idStudent);
+		Course course = findCourseById(idCourse);
+		if (userManagementLocal.checkTeacherByCourseId(idCourse, idTeacher) != null) {
+			if (userManagementLocal.checkIfStudentIsSuscribed(idStudent, idCourse) != null) {
+				if (!userManagementLocal.findSubscriptionOfStudentInCourse(idStudent, idCourse, dateOfTheEvaluation)
+						.getStateOfValidation()) {
+					// TODO check if typeOfExam exist int the map of the course
+					Map<ExamType, Integer>map=course.getMapExamType();
+					Boolean isExamTypeValid=false;
+					for (ExamType et : map.keySet()) {
+						if (et==typeOfTheEvaluation) {
+							SubscriptionDetail subscriptionDetail = userManagementLocal
+									.findSubscriptionOfStudentInCourse(idStudent, idCourse, dateOfTheEvaluation);
+							subscriptionDetail.getMapMarks().put(typeOfTheEvaluation, mark);
+							entityManager.merge(subscriptionDetail);
+							isExamTypeValid=true;
+						}
+						
+					}
+					System.out.println(isExamTypeValid);
+					
+				} else {
+					System.out.println("the student has valitaded this course");
+				}
+			} else {
+				System.out.println("student not subscribed in this course");
+			}
+		} else {
+			System.err.println("you are not authorized ");
+		}
+
 	}
 }

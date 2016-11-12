@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Embeddable;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Embeddable
 public class SubscriptionDetailId implements Serializable {
@@ -15,6 +17,7 @@ public class SubscriptionDetailId implements Serializable {
 
 	private int idUser;
 	private int idCourse;
+	@Temporal(TemporalType.DATE)
 	private Date dateOfTheSubscription;
 
 	public SubscriptionDetailId() {
@@ -25,6 +28,13 @@ public class SubscriptionDetailId implements Serializable {
 		this.idUser = idUser;
 		this.idCourse = idCourse;
 		this.dateOfTheSubscription = new Date();
+	}
+
+	public SubscriptionDetailId(int idUser, int idCourse, Date dateOfTheSubscription) {
+		super();
+		this.idUser = idUser;
+		this.idCourse = idCourse;
+		this.dateOfTheSubscription = dateOfTheSubscription;
 	}
 
 	public int getIdUser() {
