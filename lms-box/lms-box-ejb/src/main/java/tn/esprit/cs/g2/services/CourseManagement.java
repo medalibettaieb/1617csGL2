@@ -105,21 +105,21 @@ public class CourseManagement implements CourseManagementRemote, CourseManagemen
 			if (userManagementLocal.checkIfStudentIsSuscribed(idStudent, idCourse) != null) {
 				if (!userManagementLocal.findSubscriptionOfStudentInCourse(idStudent, idCourse, dateOfTheEvaluation)
 						.getStateOfValidation()) {
-					// TODO check if typeOfExam exist int the map of the course
-					Map<ExamType, Integer>map=course.getMapExamType();
-					Boolean isExamTypeValid=false;
+					// check if typeOfExam exist int the map of the course
+					Map<ExamType, Integer> map = course.getMapExamType();
+					Boolean isExamTypeValid = false;
 					for (ExamType et : map.keySet()) {
-						if (et==typeOfTheEvaluation) {
+						if (et == typeOfTheEvaluation) {
 							SubscriptionDetail subscriptionDetail = userManagementLocal
 									.findSubscriptionOfStudentInCourse(idStudent, idCourse, dateOfTheEvaluation);
 							subscriptionDetail.getMapMarks().put(typeOfTheEvaluation, mark);
 							entityManager.merge(subscriptionDetail);
-							isExamTypeValid=true;
+							isExamTypeValid = true;
 						}
-						
+
 					}
 					System.out.println(isExamTypeValid);
-					
+
 				} else {
 					System.out.println("the student has valitaded this course");
 				}

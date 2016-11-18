@@ -15,7 +15,7 @@ public class _03TestFindAllStudentsByCourseId {
 		CourseManagementRemote courseManagementRemote = (CourseManagementRemote) context
 				.lookup("lms-box-ear/lms-box-ejb/CourseManagement!tn.esprit.cs.g2.services.CourseManagementRemote");
 
-		List<Student> students = courseManagementRemote.findAllStudentsByCourseId(2);
+		List<Student> students = courseManagementRemote.findAllStudentsByCourseId(1);
 		for (Student s : students) {
 			System.out.println(s.getName());
 		}

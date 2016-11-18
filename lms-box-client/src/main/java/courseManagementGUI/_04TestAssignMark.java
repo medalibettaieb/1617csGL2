@@ -17,8 +17,8 @@ public class _04TestAssignMark {
 		CourseManagementRemote courseManagementRemote = (CourseManagementRemote) context
 				.lookup("lms-box-ear/lms-box-ejb/CourseManagement!tn.esprit.cs.g2.services.CourseManagementRemote");
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		Date dateOfTheEvaluation = dateFormat.parse("2016-11-12");
-		
+		Date dateOfTheEvaluation = dateFormat.parse("2016-11-18");
+
 		courseManagementRemote.assignMarks(6, 1, 1, ExamType.EXAM, 18F, dateOfTheEvaluation);
 	}
 }
