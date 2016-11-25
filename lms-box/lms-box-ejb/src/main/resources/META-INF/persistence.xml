@@ -4,12 +4,7 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="lms-box-ejb">
 		<jta-data-source>java:jboss/datasources/MySQLDS</jta-data-source>
-		<class>tn.esprit.cs.g2.entities.Course</class>
-		<class>tn.esprit.cs.g2.entities.Student</class>
-		<class>tn.esprit.cs.g2.entities.SubscriptionDetail</class>
-		<class>tn.esprit.cs.g2.entities.SubscriptionDetailId</class>
-		<class>tn.esprit.cs.g2.entities.Teacher</class>
-		<class>tn.esprit.cs.g2.entities.User</class>
+
 
 
 		<properties>
