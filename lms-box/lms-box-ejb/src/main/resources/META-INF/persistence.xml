@@ -10,8 +10,10 @@
 		<class>tn.esprit.cs.g2.entities.SubscriptionDetailId</class>
 		<class>tn.esprit.cs.g2.entities.Teacher</class>
 		<class>tn.esprit.cs.g2.entities.User</class>
+
+
 		<properties>
-			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
+			<property name="hibernate.hbm2ddl.auto" value="create" />
 		</properties>
 	</persistence-unit>
 </persistence>
