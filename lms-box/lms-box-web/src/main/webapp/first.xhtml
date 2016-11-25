@@ -6,8 +6,10 @@
 
 <h:head></h:head>
 <body>
-	<h1>hello</h1>
-	<h:inputText value="" />
-	<h:commandButton action="" value="doSomething" />
+	<h:form>
+		<h1>hello</h1>
+		<h:inputText value="#{mrBean.name}" />
+		<h:commandButton action="#{mrBean.displayName()}" value="doSomething" />
+	</h:form>
 </body>
 </html>
