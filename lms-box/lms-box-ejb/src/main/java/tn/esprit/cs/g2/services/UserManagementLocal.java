@@ -13,6 +13,8 @@ import tn.esprit.cs.g2.entities.User;
 
 @Local
 public interface UserManagementLocal {
+	void subscribeToLmsBox(String name, String email);
+
 	void saveOrUpdateUser(User user);
 
 	void deleteUserById(int idUser);

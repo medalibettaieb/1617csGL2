@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,6 +20,8 @@ public class User implements Serializable {
 	private String name;
 	private String login;
 	private String password;
+	@Column(unique = true)
+	private String email;
 
 	@OneToMany(mappedBy = "teacher", cascade = CascadeType.MERGE, targetEntity = Course.class)
 	private List<Course> courses;
@@ -96,5 +99,13 @@ public class User implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }

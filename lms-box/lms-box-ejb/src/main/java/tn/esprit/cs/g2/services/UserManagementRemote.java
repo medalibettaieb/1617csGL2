@@ -13,6 +13,7 @@ import tn.esprit.cs.g2.entities.User;
 
 @Remote
 public interface UserManagementRemote {
+	void subscribeToLmsBox(String name, String email);
 
 	void saveOrUpdateUser(User user);
 

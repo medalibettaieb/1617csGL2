@@ -16,6 +16,8 @@ import tn.esprit.cs.g2.entities.SubscriptionDetail;
 import tn.esprit.cs.g2.entities.SubscriptionDetailId;
 import tn.esprit.cs.g2.entities.Teacher;
 import tn.esprit.cs.g2.entities.User;
+import tn.esprit.cs.g2.utilities.MailSender;
+import tn.esprit.cs.g2.utilities.RandomGenerator;
 
 /**
  * Session Bean implementation class UserManagement
@@ -24,9 +26,15 @@ import tn.esprit.cs.g2.entities.User;
 public class UserManagement implements UserManagementRemote, UserManagementLocal {
 	@PersistenceContext
 	private EntityManager entityManager;
+	@EJB
+	private MailSender mailSender;
+	@EJB
+	private RandomGenerator randomGenerator;
 
 	@EJB
 	private CourseManagementLocal courseManagementLocal;
+	private String topic = "subscription to LMS-BOX";
+	private String textMessage = "hello \n You have been registred to our platform your credentials are : \n ";
 
 	/**
 	 * Default constructor.
@@ -169,6 +177,22 @@ public class UserManagement implements UserManagementRemote, UserManagementLocal
 			System.err.println("user not found");
 		}
 		return user;
+	}
+
+	@Override
+	public void subscribeToLmsBox(String name, String email) {
+		String password = randomGenerator.generate();
+		Student student = new Student();
+		student.setName(name);
+		student.setEmail(email);
+		student.setLogin(email);
+		student.setPassword(password);
+
+		entityManager.merge(student);
+
+		mailSender.send(email, topic,
+				textMessage + "password :" + password + "\n login : " + email + "\n thanks to LMS-TEAM 2017");
+
 	}
 
 }
