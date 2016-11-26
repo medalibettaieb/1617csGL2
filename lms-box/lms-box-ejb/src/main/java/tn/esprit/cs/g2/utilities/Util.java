@@ -36,11 +36,11 @@ public class Util {
 
 	@PostConstruct
 	public void initDB() {
-		Student student = new Student("salah", "VIP");
-		Student student2 = new Student("olfa", "VIP");
-		Student student3 = new Student("rim", "VIP");
-		Student student4 = new Student("ali", "VIP");
-		Student student5 = new Student("sami", "VIP");
+		Student student = new Student("salah", "salah", "salah", "VIP");
+		Student student2 = new Student("olfa", "olfa", "olfa", "VIP");
+		Student student3 = new Student("rim", "rim", "rim", "VIP");
+		Student student4 = new Student("ali", "ali", "ali", "VIP");
+		Student student5 = new Student("sami", "sami", "sami", "VIP");
 
 		Map<ExamType, Integer> map = new HashMap<>();
 		map.put(ExamType.DS, 20);
@@ -49,8 +49,8 @@ public class Util {
 		map2.put(ExamType.TP, 50);
 		map2.put(ExamType.PROJECT, 50);
 
-		Teacher teacher = new Teacher("hmed", 10);
-		Teacher teacher2 = new Teacher("saida", 20);
+		Teacher teacher = new Teacher("hmed", "hmed", "hmed", 10);
+		Teacher teacher2 = new Teacher("saida", "saida", "saida", 20);
 
 		Course course = new Course("java EE", map);
 		course.setTeacher(teacher);

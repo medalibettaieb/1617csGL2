@@ -24,6 +24,11 @@ public class Teacher extends User implements Serializable {
 		this.experience = experience;
 	}
 
+	public Teacher(String name, String login, String password, int experience) {
+		super(name, login, password);
+		this.experience = experience;
+	}
+
 	public int getExperience() {
 		return this.experience;
 	}

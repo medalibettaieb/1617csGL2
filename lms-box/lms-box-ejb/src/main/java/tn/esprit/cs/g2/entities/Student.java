@@ -24,6 +24,16 @@ public class Student extends User implements Serializable {
 		this.studentCard = studentCard;
 	}
 
+	public Student(String name, String login, String password, String studentCard) {
+		super(name, login, password);
+		this.studentCard = studentCard;
+	}
+
+	public Student(String name) {
+		super(name);
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getStudentCard() {
 		return this.studentCard;
 	}

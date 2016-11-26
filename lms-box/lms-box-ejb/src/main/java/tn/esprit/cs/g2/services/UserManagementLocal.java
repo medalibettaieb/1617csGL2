@@ -32,6 +32,8 @@ public interface UserManagementLocal {
 	List<User> findAllUsers();
 
 	Student checkIfStudentIsSuscribed(int studentId, int courseId);
-	
-	SubscriptionDetail findSubscriptionOfStudentInCourse(int studentId, int courseId,Date dateOfTheSubscription);
+
+	SubscriptionDetail findSubscriptionOfStudentInCourse(int studentId, int courseId, Date dateOfTheSubscription);
+
+	User login(String login, String password);
 }

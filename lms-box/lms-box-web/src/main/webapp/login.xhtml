@@ -7,10 +7,13 @@
 <h:head></h:head>
 <body>
 	<h:form>
-		<h:outputText value="name" />
-		<h:inputText value="#{userManagementBean.student.name}" />
-		<h:commandButton action="#{userManagementBean.doSaveOrUpdate()}"
-			value="add" />
+		<h:panelGrid columns="2">
+			<h:outputText value="login" />
+			<h:inputText value="#{identity.user.login}" />
+			<h:outputText value="password" />
+			<h:inputSecret value="#{identity.user.password}" />
+		</h:panelGrid>
+		<h:commandButton action="#{identity.doLogin()}" value="login" />
 	</h:form>
 </body>
 </html>
