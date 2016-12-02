@@ -18,6 +18,8 @@ public class CourseManagementBean {
 
 	private Course course = new Course();
 	private List<Course> coursesByTeacher;
+	private List<Course> coursesByStudent;
+	private List<Course> allCourses;
 	@EJB
 	private CourseManagementLocal courseManagementLocal;
 	@ManagedProperty(value = "#{identity}")
@@ -27,6 +29,11 @@ public class CourseManagementBean {
 		int idTeacher = identity.getUser().getId();
 		courseManagementLocal.addCourseWithTeacher(course, idTeacher);
 		return null;
+	}
+
+	public String doSubscribe() {
+		courseManagementLocal.subscibeToCourse(course.getId(), identity.getUser().getId());
+		return "/pages/studentHome/home?faces-redirect=true";
 	}
 
 	public void select() {
@@ -66,7 +73,7 @@ public class CourseManagementBean {
 	}
 
 	public List<Course> getCoursesByTeacher() {
-		coursesByTeacher = courseManagementLocal.findAllCoursesByIdUser(identity.getUser().getId());
+		coursesByTeacher = courseManagementLocal.findCoursesByTeacherId(identity.getUser().getId());
 		return coursesByTeacher;
 	}
 
@@ -88,6 +95,24 @@ public class CourseManagementBean {
 
 	public void setDisplayF2(Boolean displayF2) {
 		this.displayF2 = displayF2;
+	}
+
+	public List<Course> getAllCourses() {
+		allCourses = courseManagementLocal.findAllCourses();
+		return allCourses;
+	}
+
+	public void setAllCourses(List<Course> allCourses) {
+		this.allCourses = allCourses;
+	}
+
+	public List<Course> getCoursesByStudent() {
+		coursesByStudent = courseManagementLocal.findAllCoursesByIdUser(identity.getUser().getId());
+		return coursesByStudent;
+	}
+
+	public void setCoursesByStudent(List<Course> coursesByStudent) {
+		this.coursesByStudent = coursesByStudent;
 	}
 
 }

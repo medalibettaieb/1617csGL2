@@ -82,8 +82,8 @@ public class CourseManagement implements CourseManagementRemote, CourseManagemen
 
 	@Override
 	public List<Course> findAllCoursesByIdUser(int idUser) {
-		return entityManager.createQuery("select c from Course c where c.teacher.id=:param", Course.class)
-				.setParameter("param", idUser).getResultList();
+		return entityManager.createQuery("select c from Course c join c.subscriptionDetails cs where cs.user.id=:param",
+				Course.class).setParameter("param", idUser).getResultList();
 	}
 
 	@Override
