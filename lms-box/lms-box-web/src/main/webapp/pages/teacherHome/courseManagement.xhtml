@@ -54,12 +54,22 @@
 
 		</h:form>
 		<h:form id="f3">
-			<h:dataTable value="#{courseManagementBean.studentsByCourse}" var="s">
+			<h:dataTable value="#{courseManagementBean.studentsByCourse}" var="s" border="3">
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="name" />
 					</f:facet>
 					<h:outputText value="#{s.name}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="#" />
+					</f:facet>
+					<h:selectManyCheckbox value="#{courseManagementBean.examType}">
+						<f:selectItem itemLabel="one" />
+							<f:selectItem itemLabel="one" />
+								<f:selectItem itemLabel="one" />
+					</h:selectManyCheckbox>
 				</h:column>
 			</h:dataTable>
 		</h:form>

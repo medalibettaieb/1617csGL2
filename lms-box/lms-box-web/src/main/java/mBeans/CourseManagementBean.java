@@ -8,6 +8,7 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 
 import tn.esprit.cs.g2.entities.Course;
+import tn.esprit.cs.g2.entities.ExamType;
 import tn.esprit.cs.g2.entities.Student;
 import tn.esprit.cs.g2.services.CourseManagementLocal;
 
@@ -23,6 +24,8 @@ public class CourseManagementBean {
 	private List<Course> coursesByStudent;
 	private List<Course> allCourses;
 	private List<Student> studentsByCourse;
+
+	private ExamType examType;
 	@EJB
 	private CourseManagementLocal courseManagementLocal;
 	@ManagedProperty(value = "#{identity}")
@@ -140,6 +143,14 @@ public class CourseManagementBean {
 
 	public void setDisplayF3(Boolean displayF3) {
 		this.displayF3 = displayF3;
+	}
+
+	public ExamType getExamType() {
+		return examType;
+	}
+
+	public void setExamType(ExamType examType) {
+		this.examType = examType;
 	}
 
 }
