@@ -8,6 +8,7 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 
 import tn.esprit.cs.g2.entities.Course;
+import tn.esprit.cs.g2.entities.Student;
 import tn.esprit.cs.g2.services.CourseManagementLocal;
 
 @ManagedBean
@@ -15,11 +16,13 @@ import tn.esprit.cs.g2.services.CourseManagementLocal;
 public class CourseManagementBean {
 	private Boolean displayF1 = true;
 	private Boolean displayF2 = false;
+	private Boolean displayF3 = false;
 
 	private Course course = new Course();
 	private List<Course> coursesByTeacher;
 	private List<Course> coursesByStudent;
 	private List<Course> allCourses;
+	private List<Student> studentsByCourse;
 	@EJB
 	private CourseManagementLocal courseManagementLocal;
 	@ManagedProperty(value = "#{identity}")
@@ -29,6 +32,13 @@ public class CourseManagementBean {
 		int idTeacher = identity.getUser().getId();
 		courseManagementLocal.addCourseWithTeacher(course, idTeacher);
 		return null;
+	}
+
+	public String doFindStudentsByCourse() {
+		displayF3 = true;
+		studentsByCourse = courseManagementLocal.findAllStudentsByCourseId(course.getId());
+		return null;
+
 	}
 
 	public String doSubscribe() {
@@ -44,6 +54,7 @@ public class CourseManagementBean {
 	public void cancel() {
 		displayF1 = true;
 		displayF2 = false;
+		displayF3 = false;
 	}
 
 	public void doDeleteCourse() {
@@ -113,6 +124,22 @@ public class CourseManagementBean {
 
 	public void setCoursesByStudent(List<Course> coursesByStudent) {
 		this.coursesByStudent = coursesByStudent;
+	}
+
+	public List<Student> getStudentsByCourse() {
+		return studentsByCourse;
+	}
+
+	public void setStudentsByCourse(List<Student> studentsByCourse) {
+		this.studentsByCourse = studentsByCourse;
+	}
+
+	public Boolean getDisplayF3() {
+		return displayF3;
+	}
+
+	public void setDisplayF3(Boolean displayF3) {
+		this.displayF3 = displayF3;
 	}
 
 }

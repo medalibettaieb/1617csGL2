@@ -27,6 +27,17 @@
 							target="#{courseManagementBean.course}"></f:setPropertyActionListener>
 					</h:commandButton>
 				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="#" />
+					</f:facet>
+					<h:commandButton
+						action="#{courseManagementBean.doFindStudentsByCourse}"
+						value="list students">
+						<f:setPropertyActionListener value="#{c}"
+							target="#{courseManagementBean.course}"></f:setPropertyActionListener>
+					</h:commandButton>
+				</h:column>
 			</h:dataTable>
 		</h:form>
 		<h:form id="f2" rendered="#{courseManagementBean.displayF2}">
@@ -41,6 +52,16 @@
 					value="cancel" />
 			</h:panelGrid>
 
+		</h:form>
+		<h:form id="f3">
+			<h:dataTable value="#{courseManagementBean.studentsByCourse}" var="s">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="name" />
+					</f:facet>
+					<h:outputText value="#{s.name}" />
+				</h:column>
+			</h:dataTable>
 		</h:form>
 	</ui:define>
 </ui:composition>
