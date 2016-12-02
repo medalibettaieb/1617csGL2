@@ -13,6 +13,7 @@ import tn.esprit.cs.g2.services.UserManagementLocal;
 @SessionScoped
 public class Identity {
 	private User user = new User();
+	private Boolean loggedInAsTeacher = false;
 	@EJB
 	private UserManagementLocal userManagementLocal;
 
@@ -20,8 +21,9 @@ public class Identity {
 		String navigateTo = null;
 		User userLoggedIn = userManagementLocal.login(user.getLogin(), user.getPassword());
 		if (userLoggedIn != null) {
-			user=userLoggedIn;
+			user = userLoggedIn;
 			if (userLoggedIn instanceof Teacher) {
+				loggedInAsTeacher = true;
 				navigateTo = "/pages/teacherHome/home?faces-redirect=true";
 			} else if (userLoggedIn instanceof Student) {
 				navigateTo = "/pages/studentHome/home?faces-redirect=true";
@@ -38,6 +40,14 @@ public class Identity {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public Boolean getLoggedInAsTeacher() {
+		return loggedInAsTeacher;
+	}
+
+	public void setLoggedInAsTeacher(Boolean loggedInAsTeacher) {
+		this.loggedInAsTeacher = loggedInAsTeacher;
 	}
 
 }

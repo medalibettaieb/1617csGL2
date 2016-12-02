@@ -5,13 +5,19 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
 	template="/WEB-INF/template/template.xhtml">
-	<ui:define name="title">home</ui:define>
+	<ui:define name="title">course management</ui:define>
 	<ui:define name="content">
-		<h1>hello #{identity.user.name}</h1>
-		<h:form>
-			<h:commandLink action="addCourse" value="add course" />
-			<br />
-			<h:commandLink action="courseManagement" value="manage courses" />
+		<h:form id="f1">
+			<h1>list of my courses</h1>
+			<h:dataTable value="#{courseManagementBean.coursesByTeacher}" var="c"
+				border="3">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="name" />
+					</f:facet>
+					<h:outputText value="#{c.name}" />
+				</h:column>
+			</h:dataTable>
 		</h:form>
 	</ui:define>
 </ui:composition>

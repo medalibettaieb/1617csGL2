@@ -65,6 +65,7 @@ public class CourseManagement implements CourseManagementRemote, CourseManagemen
 		entityManager.merge(subscriptionDetail);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Student> findAllStudentsByCourseId(int idCourse) {
 		List<Student> students = null;
@@ -81,8 +82,8 @@ public class CourseManagement implements CourseManagementRemote, CourseManagemen
 
 	@Override
 	public List<Course> findAllCoursesByIdUser(int idUser) {
-		// TODO Auto-generated method stub
-		return null;
+		return entityManager.createQuery("select c from Course c where c.teacher.id=:param", Course.class)
+				.setParameter("param", idUser).getResultList();
 	}
 
 	@Override
@@ -98,8 +99,6 @@ public class CourseManagement implements CourseManagementRemote, CourseManagemen
 	@Override
 	public void assignMarks(int idTeacher, int idCourse, int idStudent, ExamType typeOfTheEvaluation, Float mark,
 			Date dateOfTheEvaluation) {
-		Teacher teacher = (Teacher) userManagementLocal.findUserById(idTeacher);
-		Student student = (Student) userManagementLocal.findUserById(idStudent);
 		Course course = findCourseById(idCourse);
 		if (userManagementLocal.checkTeacherByCourseId(idCourse, idTeacher) != null) {
 			if (userManagementLocal.checkIfStudentIsSuscribed(idStudent, idCourse) != null) {
