@@ -30,8 +30,8 @@ body {
 }
 #sidebar {
     font-size: 0.9em;
-    width: 225px;
-    float: right;
+    width: 1px;
+    float: left;
     border: 1px solid #666666;
     background: #EAECEE;
     padding: 0 15px 5px 15px;

@@ -1,16 +1,24 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	   xmlns:f="http://xmlns.jcp.org/jsf/core"
-	   xmlns:h="http://xmlns.jcp.org/jsf/html"
-	   xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	   xmlns:jsf="http://xmlns.jcp.org/jsf"
-	   xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
-	   xmlns:p="http://primefaces.org/ui">
-	   
-	<h:form rendered="#{identity.hasRole('C')}">
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:form rendered="#{identity.loggedInAsTeacher}">
 		<h:panelGrid columns="2">
-			<h:commandLink action="/pages/client/mymovies?faces-redirect=true" value="My Movies" />
-			<h:commandLink action="/pages/client/exchange?faces-redirect=true" value="Exchange" />
+			<h:commandLink action="addCourse" value="add course" /><br/>
+			<h:commandLink action="courseManagement" value="manage courses" />
 		</h:panelGrid>
-	</h:form>	   
+	</h:form>
+	<h:form rendered="#{identity.loggedInAsStudent}">
+		<h:panelGrid columns="2">
+			<h:commandLink action="/pages/client/mymovies?faces-redirect=true"
+				value="My Movies" />
+			<h:commandLink action="/pages/client/exchange?faces-redirect=true"
+				value="Exchange" />
+		</h:panelGrid>
+	</h:form>
 
 </ui:composition>

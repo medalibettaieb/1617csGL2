@@ -16,6 +16,7 @@ public class Identity {
 	private User user = new User();
 	private Boolean isLogged = false;
 	private Boolean loggedInAsTeacher = false;
+	private Boolean loggedInAsStudent = false;
 	@EJB
 	private UserManagementLocal userManagementLocal;
 
@@ -29,6 +30,7 @@ public class Identity {
 				loggedInAsTeacher = true;
 				navigateTo = "/pages/teacherHome/home?faces-redirect=true";
 			} else if (userLoggedIn instanceof Student) {
+				loggedInAsStudent = true;
 				navigateTo = "/pages/studentHome/home?faces-redirect=true";
 			}
 		} else {
@@ -64,6 +66,14 @@ public class Identity {
 
 	public void setIsLogged(Boolean isLogged) {
 		this.isLogged = isLogged;
+	}
+
+	public Boolean getLoggedInAsStudent() {
+		return loggedInAsStudent;
+	}
+
+	public void setLoggedInAsStudent(Boolean loggedInAsStudent) {
+		this.loggedInAsStudent = loggedInAsStudent;
 	}
 
 }
