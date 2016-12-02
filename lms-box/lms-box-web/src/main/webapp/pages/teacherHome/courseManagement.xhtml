@@ -7,7 +7,7 @@
 	template="/WEB-INF/template/template.xhtml">
 	<ui:define name="title">course management</ui:define>
 	<ui:define name="content">
-		<h:form id="f1">
+		<h:form id="f1" rendered="#{courseManagementBean.displayF1}">
 			<h1>list of my courses</h1>
 			<h:dataTable value="#{courseManagementBean.coursesByTeacher}" var="c"
 				border="3">
@@ -17,7 +17,30 @@
 					</f:facet>
 					<h:outputText value="#{c.name}" />
 				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="#" />
+					</f:facet>
+					<h:commandButton action="#{courseManagementBean.select()}"
+						value="select">
+						<f:setPropertyActionListener value="#{c}"
+							target="#{courseManagementBean.course}"></f:setPropertyActionListener>
+					</h:commandButton>
+				</h:column>
 			</h:dataTable>
+		</h:form>
+		<h:form id="f2" rendered="#{courseManagementBean.displayF2}">
+			<h:panelGrid columns="2">
+				<h:outputText value="name" />
+				<h:inputText value="#{courseManagementBean.course.name}" />
+				<h:commandButton action="#{courseManagementBean.doUpdateCourse()}"
+					value="update" />
+				<h:commandButton action="#{courseManagementBean.doDeleteCourse()}"
+					value="delete" />
+				<h:commandButton action="#{courseManagementBean.cancel()}"
+					value="cancel" />
+			</h:panelGrid>
+
 		</h:form>
 	</ui:define>
 </ui:composition>

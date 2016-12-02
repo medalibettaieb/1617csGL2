@@ -7,8 +7,9 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<h:form rendered="#{identity.loggedInAsTeacher}">
-		<h:panelGrid columns="2">
-			<h:commandLink action="addCourse" value="add course" /><br/>
+		<h:panelGrid columns="2" id="sidebar">
+			<h:commandLink action="addCourse" value="add course" />
+			<br />
 			<h:commandLink action="courseManagement" value="manage courses" />
 		</h:panelGrid>
 	</h:form>

@@ -130,4 +130,10 @@ public class CourseManagement implements CourseManagementRemote, CourseManagemen
 		}
 
 	}
+
+	@Override
+	public void deleteCourse(int courseId) {
+		entityManager.remove(findCourseById(courseId));
+
+	}
 }

@@ -28,6 +28,8 @@ public interface CourseManagementLocal {
 
 	List<Course> findAllCourses();
 
-	void assignMarks(int idTeacher, int idCourse, int idStudent, ExamType typeOfTheEvaluation, Float mark,Date dateOfTheEvaluation);
+	void assignMarks(int idTeacher, int idCourse, int idStudent, ExamType typeOfTheEvaluation, Float mark,
+			Date dateOfTheEvaluation);
 
+	void deleteCourse(int courseId);
 }

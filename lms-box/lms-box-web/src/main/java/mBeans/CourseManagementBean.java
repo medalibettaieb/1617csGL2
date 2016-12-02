@@ -13,6 +13,9 @@ import tn.esprit.cs.g2.services.CourseManagementLocal;
 @ManagedBean
 @ViewScoped
 public class CourseManagementBean {
+	private Boolean displayF1 = true;
+	private Boolean displayF2 = false;
+
 	private Course course = new Course();
 	private List<Course> coursesByTeacher;
 	@EJB
@@ -24,6 +27,26 @@ public class CourseManagementBean {
 		int idTeacher = identity.getUser().getId();
 		courseManagementLocal.addCourseWithTeacher(course, idTeacher);
 		return null;
+	}
+
+	public void select() {
+		displayF1 = false;
+		displayF2 = true;
+	}
+
+	public void cancel() {
+		displayF1 = true;
+		displayF2 = false;
+	}
+
+	public void doDeleteCourse() {
+		courseManagementLocal.deleteCourse(course.getId());
+		cancel();
+	}
+
+	public void doUpdateCourse() {
+		courseManagementLocal.saveOrUpdateCourse(course);
+		cancel();
 	}
 
 	public Identity getIdentity() {
@@ -49,6 +72,22 @@ public class CourseManagementBean {
 
 	public void setCoursesByTeacher(List<Course> coursesByTeacher) {
 		this.coursesByTeacher = coursesByTeacher;
+	}
+
+	public Boolean getDisplayF1() {
+		return displayF1;
+	}
+
+	public void setDisplayF1(Boolean displayF1) {
+		this.displayF1 = displayF1;
+	}
+
+	public Boolean getDisplayF2() {
+		return displayF2;
+	}
+
+	public void setDisplayF2(Boolean displayF2) {
+		this.displayF2 = displayF2;
 	}
 
 }
