@@ -3,6 +3,7 @@ package mBeans;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import tn.esprit.cs.g2.entities.Student;
 import tn.esprit.cs.g2.entities.Teacher;
@@ -13,6 +14,7 @@ import tn.esprit.cs.g2.services.UserManagementLocal;
 @SessionScoped
 public class Identity {
 	private User user = new User();
+	private Boolean isLogged = false;
 	private Boolean loggedInAsTeacher = false;
 	@EJB
 	private UserManagementLocal userManagementLocal;
@@ -22,6 +24,7 @@ public class Identity {
 		User userLoggedIn = userManagementLocal.login(user.getLogin(), user.getPassword());
 		if (userLoggedIn != null) {
 			user = userLoggedIn;
+			isLogged = true;
 			if (userLoggedIn instanceof Teacher) {
 				loggedInAsTeacher = true;
 				navigateTo = "/pages/teacherHome/home?faces-redirect=true";
@@ -32,6 +35,11 @@ public class Identity {
 			navigateTo = "/fail?faces-redirect=true";
 		}
 		return navigateTo;
+	}
+
+	public String logout() {
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		return "/login?faces-redirect=true";
 	}
 
 	public User getUser() {
@@ -48,6 +56,14 @@ public class Identity {
 
 	public void setLoggedInAsTeacher(Boolean loggedInAsTeacher) {
 		this.loggedInAsTeacher = loggedInAsTeacher;
+	}
+
+	public Boolean getIsLogged() {
+		return isLogged;
+	}
+
+	public void setIsLogged(Boolean isLogged) {
+		this.isLogged = isLogged;
 	}
 
 }

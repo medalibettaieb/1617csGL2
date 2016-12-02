@@ -6,12 +6,13 @@
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
 	xmlns:p="http://primefaces.org/ui">
 
-	<h:form rendered="#{not empty loginBean.identifidUser}">
+	<h:form rendered="#{identity.isLogged}">
 		<h:panelGrid columns="2">
-			<h:outputText value="Logged in as #{loginBean.user.name}" />
-			<p:commandButton action="#{loginBean.logout()}" ajax="false"
+			<h:outputText value="Logged in as #{identity.user.name}" />
+			<p:commandButton action="#{identity.logout()}" ajax="false"
 				value="Logout" />
 		</h:panelGrid>
 	</h:form>
 
 </ui:composition>
+
