@@ -2,6 +2,7 @@ package tn.esprit.cs.g2.services;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.Local;
 
@@ -32,4 +33,6 @@ public interface CourseManagementLocal {
 			Date dateOfTheEvaluation);
 
 	void deleteCourse(int courseId);
+
+	Map<ExamType, Float> findMarksByStudentAndCourse(int studentId, int courseId);
 }

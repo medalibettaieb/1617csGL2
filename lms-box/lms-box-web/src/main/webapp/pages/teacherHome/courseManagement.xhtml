@@ -64,14 +64,36 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="#" />
+						<h:outputText value="type exam" />
 					</f:facet>
 					<h:selectOneRadio value="#{courseManagementBean.examType}">
-					<f:selectItems value="#{courseManagementBean.keyList}" var="e"
+						<f:selectItems value="#{courseManagementBean.keyList}" var="e"
 							itemLabel="#{e.name()}" />
 					</h:selectOneRadio>
 				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="mark" />
+					</f:facet>
+					<h:inputText value="#{courseManagementBean.mark}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="date" />
+					</f:facet>
+					<h:inputText value="#{courseManagementBean.date}">
+						<f:convertDateTime pattern="yyyy-MM-dd" />
+					</h:inputText>
+				</h:column>
+				<h:column>
+					<h:commandButton action="#{courseManagementBean.doIt(s)}"
+						value="doIt" />
+				</h:column>
 			</h:dataTable>
+			<h:inputText value="#{courseManagementBean.date}">
+			<f:convertDateTime pattern="d/M/yyyy" />
+			</h:inputText>
+		<h:commandButton action="#{courseManagementBean.dodo}" value="dd" />
 		</h:form>
 	</ui:define>
 </ui:composition>

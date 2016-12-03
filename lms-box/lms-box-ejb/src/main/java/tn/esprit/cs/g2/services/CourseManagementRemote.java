@@ -2,6 +2,7 @@ package tn.esprit.cs.g2.services;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.Remote;
 
@@ -27,6 +28,10 @@ public interface CourseManagementRemote {
 
 	List<Course> findAllCourses();
 
-	void assignMarks(int idTeacher, int idCourse, int idStudent, ExamType typeOfTheEvaluation, Float mark,Date dateOfTheEvaluation);
+	void assignMarks(int idTeacher, int idCourse, int idStudent, ExamType typeOfTheEvaluation, Float mark,
+			Date dateOfTheEvaluation);
 
+	Map<ExamType, Float> findMarksByStudentAndCourse(int studentId, int courseId);
+	
+	Map<ExamType, Float> findMarksByStudentAndCourseBis(int studentId, int courseId);
 }

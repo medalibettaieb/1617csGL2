@@ -1,6 +1,7 @@
 package mBeans;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -19,6 +20,7 @@ public class CourseManagementBean {
 	private Boolean displayF1 = true;
 	private Boolean displayF2 = false;
 	private Boolean displayF3 = false;
+	private Date date = new Date();
 
 	private Course course = new Course();
 	private List<Course> coursesByTeacher;
@@ -28,10 +30,20 @@ public class CourseManagementBean {
 	private List<ExamType> keyList;
 
 	private ExamType examType;
+	private Float mark;
 	@EJB
 	private CourseManagementLocal courseManagementLocal;
 	@ManagedProperty(value = "#{identity}")
 	private Identity identity;
+
+	public void doIt(Student student) {
+		courseManagementLocal.assignMarks(identity.getUser().getId(), course.getId(), student.getId(), examType, mark,
+				date);
+	}
+
+	public void dodo() {
+		System.out.println(date);
+	}
 
 	public String doSaveOrUpdateCourse() {
 		int idTeacher = identity.getUser().getId();
@@ -162,6 +174,22 @@ public class CourseManagementBean {
 
 	public void setKeyList(List<ExamType> keyList) {
 		this.keyList = keyList;
+	}
+
+	public Float getMark() {
+		return mark;
+	}
+
+	public void setMark(Float mark) {
+		this.mark = mark;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 }

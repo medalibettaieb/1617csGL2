@@ -1,6 +1,8 @@
 package tn.esprit.cs.g2.services;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -135,5 +137,38 @@ public class CourseManagement implements CourseManagementRemote, CourseManagemen
 	public void deleteCourse(int courseId) {
 		entityManager.remove(findCourseById(courseId));
 
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public Map<ExamType, Float> findMarksByStudentAndCourse(int studentId, int courseId) {
+		Course course = findCourseById(courseId);
+		Student student = (Student) userManagementLocal.findUserById(studentId);
+		List<SubscriptionDetail> subscriptionDetails = course.getSubscriptionDetails();
+		String jpql = "SELECT sd FROM SubscriptionDetail sd WHERE sd.course=:param1 AND sd.user=:param2 ";
+		Query query = entityManager.createQuery(jpql);
+		query.setParameter("param1", course);
+		query.setParameter("param2", student);
+		subscriptionDetails = query.getResultList();
+		System.out.println("subscriptions " + subscriptionDetails.size());
+		Map<ExamType, Float> markDetail = new HashMap<>();
+		for (SubscriptionDetail sd : subscriptionDetails) {
+			Map.Entry<ExamType, Float> entry = sd.getMapMarks().entrySet().iterator().next();
+			markDetail.put(entry.getKey(), entry.getValue());
+		}
+		return markDetail;
+	}
+
+	@Override
+	public Map<ExamType, Float> findMarksByStudentAndCourseBis(int studentId, int courseId) {
+		Course course = findCourseById(courseId);
+		Student student = (Student) userManagementLocal.findUserById(studentId);
+		List<SubscriptionDetail> subscriptionDetails = course.getSubscriptionDetails();
+		List<SubscriptionDetail> subscriptionDetailsByStudent = new ArrayList<>();
+		for (SubscriptionDetail s : subscriptionDetails) {
+			System.out.println(s.getMapMarks().size());
+		}
+		System.out.println(subscriptionDetailsByStudent.size());
+		return null;
 	}
 }
