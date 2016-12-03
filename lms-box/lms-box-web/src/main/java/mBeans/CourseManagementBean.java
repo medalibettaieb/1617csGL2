@@ -1,5 +1,6 @@
 package mBeans;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -24,6 +25,7 @@ public class CourseManagementBean {
 	private List<Course> coursesByStudent;
 	private List<Course> allCourses;
 	private List<Student> studentsByCourse;
+	private List<ExamType> keyList;
 
 	private ExamType examType;
 	@EJB
@@ -151,6 +153,15 @@ public class CourseManagementBean {
 
 	public void setExamType(ExamType examType) {
 		this.examType = examType;
+	}
+
+	public List<ExamType> getKeyList() {
+		keyList = new ArrayList<ExamType>(course.getMapExamType().keySet());
+		return keyList;
+	}
+
+	public void setKeyList(List<ExamType> keyList) {
+		this.keyList = keyList;
 	}
 
 }
